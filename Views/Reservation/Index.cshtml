@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Airline_Reservation_System.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Passengers";
+}
+
+<h1 class="text-center"><b>Passengers</b></h1>
+<hr/>
+
+<form asp-action="Index" method="get" >
+    <div class="form-actions no-color">
+        <p>
+            Search by name or number: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-action="Index" class="btn btn-danger align-self-center">Clear</a>
+            @*<br />
+            <br />
+            Find by number : <input type="text" name="SearchString1" value="@ViewData["NumberFilter"]" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-action="Index" class="btn btn-danger align-self-center">Clear</a>*@
+        </p>
+    </div>
+</form>
+<table id="table" class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["FnameSortParm"]"><i class="fas fa-sort"></i>@Html.DisplayNameFor(model => model.FirstName)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["LnameSortParm"]"><i class="fas fa-sort"></i>@Html.DisplayNameFor(model => model.LastName)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PassportSortParm"]"><i class="fas fa-sort"></i>@Html.DisplayNameFor(model => model.PassportNumber)</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PhoneSortParm"]"><i class="fas fa-sort"></i>@Html.DisplayNameFor(model => model.CellphoneNumber)</a>
+            </th>
+            <th>
+                <a asp-action="New" class="btn btn-success btn-lg"><i class="fa fa-plus-circle"></i>Add</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassportNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CellphoneNumber)
+            </td>
+            <td>
+                <a asp-action="New" asp-route-id="@item.ReservationId"><i class="fas fa-cog fa-lg"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.ReservationId" class="text-danger ml-1"><i class="fas fa-user-times fa-lg"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

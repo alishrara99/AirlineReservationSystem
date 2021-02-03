@@ -1,0 +1,61 @@
+﻿@model Airline_Reservation_System.Models.Reservation
+
+@{
+    ViewData["Title"] = "New";
+}
+    <head>
+        <link rel="stylesheet" href="~/css/test.css" />
+    </head>
+
+<h2>New Passenger</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="New">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReservationId" />
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="PassportNumber" class="control-label"></label>
+                <input type="number" asp-for="PassportNumber" class="form-control" />
+                <span asp-validation-for="PassportNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CellphoneNumber" class="control-label"></label>
+                <input type="number" asp-for="CellphoneNumber" class="form-control" />
+                <span asp-validation-for="CellphoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <input type="submit" value="Submit" class="btn btn-success" />
+                </div>
+
+                <div class="form-group col-md-4">
+                    <a asp-action="Index" class="btn btn-danger align-self-center"><i class="far fa-times-circle"></i>Cancel</a>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

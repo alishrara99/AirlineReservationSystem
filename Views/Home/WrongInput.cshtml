@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Register Page";
+}
+
+    <div class="text-md-left">
+        <p>
+
+            <h9 style="color:red">Username can't include spaces</h9>
+            <br />
+
+        </p>
+        <form action="/Home/Register" method="post">
+            Username: <input type="text" name="username" value="" required />
+            <br />
+            <br />
+            Password : <input type="password" name="password" value="" required />
+            <br />
+            <br />
+            <button type="submit" class="btn btn-primary align-content-center">Register</button>
+            @*<a asp-controller="Reservation" asp-action="Index" class="btn btn-primary align-content-center">Login</a>*@
+        </form>
+    </div>
